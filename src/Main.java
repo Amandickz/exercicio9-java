@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.zip.DataFormatException;
@@ -22,6 +23,7 @@ public class Main {
         int quantOrder;
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateTimeFormatter dateTimeFormat =  DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
         System.out.println("Entre com os dados do Cliente: ");
         System.out.print("Nome: ");
@@ -63,6 +65,12 @@ public class Main {
             order.addItem(item);
 
         }
+
+        System.out.println("\nRESUMO DO PEDIDO:");
+        System.out.println("Data e Hora do pedido: " + dateTimeFormat.format(order.getMoment()));
+        System.out.println("Status: " + order.getStatus());
+        System.out.println("Cliente: " + order.getClient().getName() + " (" + dateFormat.format(order.getClient().getBirthDate()) + ")" +" - " + order.getClient().getEmail());
+        
 
 
 

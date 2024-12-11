@@ -37,7 +37,6 @@ public class Main {
         birthDate = dateFormat.parse(birthday);
 
         Client client = new Client(name, email,birthDate);
-        System.out.println(client);
 
         System.out.println("Entre com as informações do pedido: ");
         System.out.print("Status: ");
@@ -47,7 +46,6 @@ public class Main {
 
         LocalDateTime dateTimeOpen = LocalDateTime.now();
         Order order = new Order(client, dateTimeOpen, OrderStatus.valueOf(status));
-        System.out.println(order);
 
         for (int i = 0; i < quantOrder; i++) {
 
@@ -70,7 +68,11 @@ public class Main {
         System.out.println("Data e Hora do pedido: " + dateTimeFormat.format(order.getMoment()));
         System.out.println("Status: " + order.getStatus());
         System.out.println("Cliente: " + order.getClient().getName() + " (" + dateFormat.format(order.getClient().getBirthDate()) + ")" +" - " + order.getClient().getEmail());
-        
+        System.out.println("Itens do Pedido:");
+        for (OrderItem item : order.getOrderItems()) {
+            System.out.println(item);
+        }
+        System.out.printf("Valor total: R$ %.2f", order.total());
 
 
 

@@ -63,7 +63,6 @@ public class Order {
 
     public void addItem(OrderItem item) {
         orderItems.add(item);
-        System.out.println(orderItems.toString());
     }
 
     public void removeItem(OrderItem item) {
@@ -71,6 +70,12 @@ public class Order {
     }
 
     public double total(){
-        return 0;
+        double totalValue = 0;
+
+        for (OrderItem orderItem : orderItems) {
+            totalValue += orderItem.getProduct().getPrice() * orderItem.getQuantity();
+        }
+
+        return totalValue;
     }
 }

@@ -2,28 +2,28 @@ package classes;
 
 import entities.OrderStatus;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Order {
 
     Client client;
-    private Date moment;
+    private LocalDateTime moment;
     private OrderStatus status;
 
     ArrayList<OrderItem> orderItems = new ArrayList<>();
 
-    public Order(Client client, Date moment, OrderStatus status) {
+    public Order(Client client, LocalDateTime moment, OrderStatus status) {
         this.client = client;
         this.moment = moment;
         this.status = status;
     }
 
-    public Date getMoment() {
+    public LocalDateTime getMoment() {
         return moment;
     }
 
-    public void setMoment(Date moment) {
+    public void setMoment(LocalDateTime moment) {
         this.moment = moment;
     }
 
@@ -63,6 +63,7 @@ public class Order {
 
     public void addItem(OrderItem item) {
         orderItems.add(item);
+        System.out.println(orderItems.toString());
     }
 
     public void removeItem(OrderItem item) {

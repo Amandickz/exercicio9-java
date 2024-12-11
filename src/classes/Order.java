@@ -7,12 +7,14 @@ import java.util.Date;
 
 public class Order {
 
+    Client client;
     private Date moment;
     private OrderStatus status;
 
     ArrayList<OrderItem> orderItems = new ArrayList<>();
 
-    public Order(Date moment, OrderStatus status) {
+    public Order(Client client, Date moment, OrderStatus status) {
+        this.client = client;
         this.moment = moment;
         this.status = status;
     }
@@ -41,10 +43,19 @@ public class Order {
         this.orderItems = orderItems;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "moment=" + moment +
+                "client=" + client +
+                ", moment=" + moment +
                 ", status=" + status +
                 ", orderItems=" + orderItems +
                 '}';
